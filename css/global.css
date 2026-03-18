@@ -45,8 +45,9 @@
 
 body{
      background-image: url('../assets/bg.png');
-     background-size: center;
-     background-repeat: ;
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
      color: var(--primary-text-color);
 }
 
