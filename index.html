@@ -3,9 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
     <title>Diagnóstico de Marca</title>
+    <script defer src="js/quiz.js"></script>
 </head>
 <body>
-    
+    <main class="quiz">
+
+        <!-- TELA HOME -->
+        <section class="tela-home">
+            <div class="home-quiz-content">
+                <p class="quiz-header">DIAGNÓSTICO GRATUITO</p>
+                <h1>Sua marca tá passando <span>a mensagem certa?</span></h1>
+                <p>Responda 6 perguntinhas rápidas e descubra onde sua marca está hoje — e o que fazer pra ela começar a trabalhar por você.</p>
+                <ul class="quiz-info">
+                    <li><img src="assets/Clock.svg" alt=""><span>2 minutos</span></li>
+                    <li><img src="assets/Check square.svg" alt=""><span>6 perguntas</span></li>
+                    <li><img src="assets/Star.svg" alt=""><span>Resultado imediato</span></li>
+                </ul>
+                <button class="quiz-start" type="button" onclick="iniciarQuiz()">Descobrir agora</button>
+            </div>
+        </section>
+
+        <!-- TELA FORMULÁRIO -->
+        <section class="tela-form" style="display:none">
+            <button class="btn-voltar" type="button" onclick="voltarHome()">
+                <img src="assets/Arrow left.svg" alt="Voltar">
+            </button>
+            <p class="quiz-header">ANTES DE COMEÇAR</p>
+            <h1>Me conta um pouco sobre você e sua marca</h1>
+            <p>Prometo que é rápido — e esses dados me ajudam a te dar um diagnóstico mais certeiro.</p>
+            <form class="form-dados">
+                <label for="nome">SEU NOME *</label>
+                <input type="text" id="nome" name="nome" placeholder="Como você se chama?">
+
+                <label for="marca">NOME DA MARCA *</label>
+                <input type="text" id="marca" name="marca" placeholder="Como se chama seu negócio?">
+
+                <label for="instagram">INSTAGRAM DA MARCA *</label>
+                <input type="text" id="instagram" name="instagram" placeholder="@seuarroba">
+
+                <label for="whatsapp">WHATSAPP *</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999">
+
+                <label class="checkbox-label">
+                    <input type="checkbox" name="aceite" required>
+                    <span><strong>Aceito compartilhar meus dados</strong> com a Pixel by Juba para fins de diagnóstico e acompanhamento personalizado.</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="aceite">
+                    <span><strong>Quero receber conteúdos e informações</strong> sobre marketing e tecnologia nos canais que informei acima.</span>
+                </label>
+
+                <p class="aviso" id="aviso-form" style="display:none">Preencha seu nome, nome da marca, WhatsApp e aceite os termos para continuar.</p>
+                <button class="quiz-enviar" type="button" onclick="iniciarPerguntas()">Continuar para o diagnóstico</button>
+            </form>
+        </section>
+
+        <!-- TELA PERGUNTAS -->
+        <section class="tela-perguntas" style="display:none">
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-header">
+                <p class="quiz-header">PERGUNTA <span id="progressLabel">1</span></p>
+                <p class="quiz-header"><span id="progressCurrent">1</span>/6</p>
+            </div>
+
+            <!-- PERGUNTA 1 -->
+            <div class="pergunta" id="pergunta-1">
+                <h1>Há quanto tempo você tem seu negócio?</h1>
+                <div class="opcoes">
+                    <label class="opcao">
+                        <input type="radio" name="p1" value="a">
+                        <span>Ainda estou começando (menos de 6 meses)</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p1" value="b">
+                        <span>Já tenho um tempinho (6 meses a 2 anos)</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p1" value="c">
+                        <span>Estou no mercado há mais de 2 anos</span>
+                    </label>
+                </div>
+                <p class="aviso" style="display:none">Selecione uma opção para continuar.</p>
+                <button class="quiz-enviar" type="button" onclick="proximaPergunta(2)">Próximo</button>
+            </div>
+
+            <!-- PERGUNTA 2 -->
+            <div class="pergunta" id="pergunta-2">
+                <h1>Como tá a identidade visual da sua marca hoje?</h1>
+                <div class="opcoes">
+                    <label class="opcao">
+                        <input type="radio" name="p2" value="a">
+                        <span>Não tenho nada definido ainda — uso o que dá</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p2" value="b">
+                        <span>Tenho alguma coisa, mas foi feita no improviso</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p2" value="c">
+                        <span>Tenho logo e cores, mas sinto que não representa minha marca</span>
+                    </label>
+                </div>
+                <p class="aviso" style="display:none">Selecione uma opção para continuar.</p>
+                <button class="quiz-enviar" type="button" onclick="proximaPergunta(3)">Próximo</button>
+            </div>
+
+            <!-- PERGUNTA 3 -->
+            <div class="pergunta" id="pergunta-3">
+                <h1>Onde você divulga seu produto ou serviço principalmente?</h1>
+                <div class="opcoes">
+                    <label class="opcao">
+                        <input type="radio" name="p3" value="a">
+                        <span>Instagram ou outras redes sociais</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p3" value="b">
+                        <span>WhatsApp e indicações</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p3" value="c">
+                        <span>Loja física ou site</span>
+                    </label>
+                </div>
+                <p class="aviso" style="display:none">Selecione uma opção para continuar.</p>
+                <button class="quiz-enviar" type="button" onclick="proximaPergunta(4)">Próximo</button>
+            </div>
+
+            <!-- PERGUNTA 4 -->
+            <div class="pergunta" id="pergunta-4">
+                <h1>Qual frase mais define seu negócio hoje?</h1>
+                <div class="opcoes">
+                    <label class="opcao">
+                        <input type="radio" name="p4" value="a">
+                        <span>"As pessoas nem sabem que meu negócio existe"</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p4" value="b">
+                        <span>"As pessoas me acham, mas não entendem o que eu faço ou porque me contratar"</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p4" value="c">
+                        <span>"As pessoas me seguem, mas não compram — e eu não sei por quê"</span>
+                    </label>
+                </div>
+                <p class="aviso" style="display:none">Selecione uma opção para continuar.</p>
+                <button class="quiz-enviar" type="button" onclick="proximaPergunta(5)">Próximo</button>
+            </div>
+
+            <!-- PERGUNTA 5 -->
+            <div class="pergunta" id="pergunta-5">
+                <h1>Você já investiu em alguma solução para a sua marca?</h1>
+                <div class="opcoes">
+                    <label class="opcao">
+                        <input type="radio" name="p5" value="a">
+                        <span>Nunca investi, sempre fiz tudo sozinha intuitivamente</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p5" value="b">
+                        <span>Já contratei alguém para resolver, mas não obtive resultados</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p5" value="c">
+                        <span>Já investi em cursos para resolver meu problema, mas não adiantou</span>
+                    </label>
+                </div>
+                <p class="aviso" style="display:none">Selecione uma opção para continuar.</p>
+                <button class="quiz-enviar" type="button" onclick="proximaPergunta(6)">Próximo</button>
+            </div>
+
+            <!-- PERGUNTA 6 -->
+            <div class="pergunta" id="pergunta-6">
+                <h1>Se você pudesse resolver uma coisa agora, o que seria?</h1>
+                <div class="opcoes">
+                    <label class="opcao">
+                        <input type="radio" name="p6" value="a">
+                        <span>Criar uma marca do zero, que pareça profissional</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p6" value="b">
+                        <span>Entender o que tá errado na minha marca atual e como corrigir</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="p6" value="c">
+                        <span>Ter um visual consistente nas redes e parar de improvisar conteúdo</span>
+                    </label>
+                </div>
+                <p class="aviso" style="display:none">Selecione uma opção para continuar.</p>
+                <button class="quiz-enviar" type="button" onclick="finalizarQuiz()">Ver meu diagnóstico</button>
+            </div>
+
+        </section>
+
+        <!-- TELA RESULTADO -->
+        <section class="tela-resultado" style="display:none">
+
+            <!-- RESULTADO A: MARCA INVISÍVEL -->
+            <div class="resultado" id="resultado-a" style="display:none">
+                <div class="resultado-circulo circulo-rosa"></div>
+                <span class="resultado-badge">MARCA INVISÍVEL</span>
+                <h1>Seu negócio existe, mas sua marca ainda não.</h1>
+                <p class="resultado-subtitulo">E tudo bem — você tá no lugar certo.</p>
+                <p>Você tá num momento muito comum pra quem tá começando: o produto ou serviço existe, a vontade é enorme, mas a marca ainda não acompanhou. Sem uma identidade visual definida, fica difícil transmitir confiança — e aí as pessoas passam sem parar.</p>
+                <div class="resultado-destaque">
+                    <p>O que faz sentido pra você agora: <span>criar uma identidade visual completa — logo, cores, tipografia — que represente quem você é e fale com quem você quer alcançar.</span></p>
+                </div>
+                <a class="quiz-enviar btn-whatsapp" href="https://wa.me/SEU_NUMERO" target="_blank">
+                    <img src="assets/Whatsapp.svg" alt="">
+                    Vamos conversar sobre a sua marca?
+                </a>
+                <a class="refazer" onclick="refazerQuiz()">Refazer o diagnóstico</a>
+            </div>
+
+            <!-- RESULTADO B: MARCA CONFUSA (desalinhada) -->
+            <div class="resultado" id="resultado-b" style="display:none">
+                <div class="resultado-circulo circulo-amarelo"></div>
+                <span class="resultado-badge">MARCA CONFUSA</span>
+                <h1>Sua marca existe, mas não conta a história certa.</h1>
+                <p class="resultado-subtitulo">Não é falta de esforço. É falta de alinhamento.</p>
+                <p>Você já tem alguma coisa — talvez um logo, talvez um perfil no Instagram — mas sente que não encaixa. Que não representa. Que as pessoas chegam, olham e não ficam. Esse é um sinal claro: sua marca tá falando uma coisa, e o seu negócio é outra.</p>
+                <div class="resultado-destaque">
+                    <p>O que faz sentido pra você agora: <span>um diagnóstico real da sua marca — entender o que tá desalinhado, o que precisa mudar e como fazer isso sem jogar tudo fora. É exatamente isso que o Raio-X de Marca resolve.</span></p>
+                </div>
+                <a class="quiz-enviar btn-whatsapp" href="https://wa.me/SEU_NUMERO" target="_blank">
+                    <img src="assets/Whatsapp.svg" alt="">
+                    Conhecer o Raio-X de Marca
+                </a>
+                <a class="refazer" onclick="refazerQuiz()">Refazer o diagnóstico</a>
+            </div>
+
+            <!-- RESULTADO C: MARCA CONFUSA (tem base, falta ritmo) -->
+            <div class="resultado" id="resultado-c" style="display:none">
+                <div class="resultado-circulo circulo-verde"></div>
+                <span class="resultado-badge">MARCA CONFUSA</span>
+                <h1>Você tem uma base. Agora precisa trabalhar.</h1>
+                <p class="resultado-subtitulo">Sua marca passou da fase de existir — falta ritmo.</p>
+                <p>Sua marca tem identidade, tem presença, mas parece que travou. O conteúdo não sai, o visual não é consistente, e você sente que tá postando no vazio. Agora ela precisa de consistência pra começar a converter de verdade.</p>
+                <div class="resultado-destaque">
+                    <p>O que faz sentido pra você agora: <span>uma estratégia de conteúdo visual que funcione — identidade consolidada nas redes e material que você consiga usar sem depender de inspiração do momento.</span></p>
+                </div>
+                <a class="quiz-enviar btn-whatsapp" href="https://wa.me/SEU_NUMERO" target="_blank">
+                    <img src="assets/Whatsapp.svg" alt="">
+                    Me conta mais sobre o seu negócio
+                </a>
+                <a class="refazer" onclick="refazerQuiz()">Refazer o diagnóstico</a>
+            </div>
+
+        </section>
+
+    </main>
 </body>
 </html>

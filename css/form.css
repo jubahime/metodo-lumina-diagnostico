@@ -1,0 +1,266 @@
+form{
+    margin-top: 24px;
+}
+
+.btn-voltar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.btn-voltar img {
+  width: 24px;
+  height: 24px;
+}
+
+label {
+  display: block;           /* ocupa linha inteira */
+  color:var(--tertiary-color) ;         /* amarelo do seu tema */
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: var(--text-weight);
+  letter-spacing: 0.1em;    /* aquele espaçamento entre letras do protótipo */
+  text-transform: uppercase; /* deixa em caixa alta automaticamente */
+  margin-bottom: 8px;        /* espaço entre label e input */
+  
+}
+
+input[type="text"],
+input[type="tel"] {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  padding: 16px;
+  color: #fff;
+  font-size: 13px;
+  font-family: inter;
+
+  /* tira o estilo padrão do navegador */
+  outline: none;
+  -webkit-appearance: none;
+  margin-bottom: 24px;
+}
+
+/* placeholder */
+input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* quando o usuário clica no campo */
+input:focus {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+input[type="checkbox"] {
+
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0; /* evita a caixinha encolher */
+}
+
+input[type="checkbox"]:checked {
+  background-color: #F5C518;
+  border-color: #F5C518;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--tertiary-color);
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: none;
+}
+
+.checkbox-label span{
+  color: var(--primary-text-color);
+  flex: 1;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+  margin-bottom: 16px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--secondary-color);
+  border-radius: 99px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--primary-text-color);
+  font-family: Inter;
+  font-size: 14px;
+  text-transform: none;
+  transition: background 0.2s ease;
+}
+
+.opcao:hover {
+  background: rgba(167, 139, 250, 0.1);
+}
+
+.opcao input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+
+.opcao input[type="radio"]:checked {
+  border-color: var(--secondary-color);
+  background: var(--secondary-color);
+}
+
+.opcao:has(input:checked) {
+  border-color: var(--secondary-color);
+  background: rgba(167, 139, 250, 0.15);
+}
+
+.aviso {
+  color: #f87171;
+  font-size: 12px;
+  margin-bottom: 8px;
+  text-transform: none;
+}
+
+/* RESULTADO */
+.resultado {
+  display: flex;
+  flex-direction: column;
+}
+
+.resultado-circulo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.circulo-rosa  { background: #f87171; }
+.circulo-amarelo { background: #F5C518; }
+.circulo-verde { background: #34d399; }
+
+.resultado-badge {
+  display: inline-block;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  font-family: Inter;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.resultado h1 {
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.resultado-subtitulo {
+  font-style: italic;
+  color: var(--tertiary-color);
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+.resultado p {
+  color: var(--primary-text-color);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+.resultado-destaque {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--secondary-color);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 32px;
+}
+
+.resultado-destaque p {
+  margin-bottom: 0;
+  color: var(--tertiary-color);
+}
+
+.resultado-destaque span {
+  color: var(--secondary-color);
+}
+
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  margin-bottom: 20px;
+}
+
+.btn-whatsapp img {
+  width: 22px;
+  height: 22px;
+}
+
+.refazer {
+  display: block;
+  text-align: center;
+  color: var(--tertiary-color);
+  font-family: Inter;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  text-transform: none;
+}
