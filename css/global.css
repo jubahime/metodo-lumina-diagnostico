@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "Genos";
+  src: url(../assets/font/Genos-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(../assets/font/Inter_24pt-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(../assets/font/Inter_24pt-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* reset css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+    --primary-color: #F0B429;
+    --secondary-color: #A78BFA;
+    --tertiary-color:#757575;
+    --forth-color: #A855F7;
+    --primary-text-color: #F1F2F3;
+    --title-weight: 
+  --titles-weight: 500;
+  --text-weight: 400;
+  --meno-text-weight: 500;
+
+}
+
+body{
+     background-image: url('../assets/bg.png');
+     background-size: center;
+     background-repeat: ;
+     color: var(--primary-text-color);
+}
+
+main{
+    padding: 40px 20px 60px;
+    margin:62px 16px auto;
+
+}
+
+
+h1{
+    font-family: Genos;
+    font-size: 40px;
+    font-weight: var(--title-weight);
+    line-height: 0.80;
+    margin-bottom: 16px ;
+    letter-spacing: 0.9;
+    
+}
+
+p{
+    font-family: Inter;
+    font-size:14px;
+    font-weight: var(--text-weight);
+    color: var(--tertiary-color);
+}
+
+.quiz-header{
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+
+ul{
+    font-family: inter;
+    font-size: 13px;
+    font-weight: var(--text-weight);
+    list-style: none;
+    color: var(--tertiary-color);
+    margin: 16px auto 0;
+}
+
+.quiz-start{
+    width: 173px;
+    height: 54px;
+    font-family: Inter;
+    font-size:14px;
+    font-weight: var(--meno-text-weight);
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    margin: 24px auto;
+}
+.quiz-enviar{
+    width: 285px;
+    height: 54px;
+    font-family: Inter;
+    font-size:14px;
+    font-weight: var(--meno-text-weight);
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    margin: 24px auto;
+    align-items: center;
+
+
+}
+
+
+
+
